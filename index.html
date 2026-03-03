@@ -10,50 +10,49 @@
       rel="stylesheet"
     />
 
-    <title>Password Generator | JavaScript Project</title>
+    <title>Password Generator - Secure & Modern</title>
   </head>
   <body>
     <div class="bubble-container" id="bubbleContainer"></div>
     <div class="wrapper">
       <h1 class="main-heading">PASSWORD GENERATOR</h1>
       <div class="container">
+        <div class="inputBox">
+          <input type="text" class="passBox" id="passBox" disabled />
+          <span class="material-icons" id="copyIcon" title="Copy password">content_copy</span>
+        </div>
 
-      <div class="inputBox">
-        <input type="text" class="passBox" id="passBox" disabled />
-        <span class="material-icons" id="copyIcon">content_copy</span>
+        <input type="range" min="1" max="30" value="8" id="inputSlider" />
+
+        <div class="row">
+          <p>Password Length</p>
+          <span id="sliderValue"></span>
+        </div>
+
+        <div class="row">
+          <label for="lowercase">Lowercase Letters (a-z)</label>
+          <input type="checkbox" name="lowercase" id="lowercase" checked/>
+        </div>
+
+        <div class="row">
+          <label for="uppercase">Uppercase Letters (A-Z)</label>
+          <input type="checkbox" name="uppercase" id="uppercase" checked/>
+        </div>
+
+        <div class="row">
+          <label for="numbers">Numbers (0-9)</label>
+          <input type="checkbox" name="numbers" id="numbers" checked/>
+        </div>
+
+        <div class="row">
+          <label for="symbols">Symbols (!@#$%^&*)</label>
+          <input type="checkbox" name="symbols" id="symbols" checked/>
+        </div>
+
+        <button type="button" class="genBtn" id="genBtn">
+          Generate Password
+        </button>
       </div>
-
-      <input type="range" min="1" max="30" value="8" id="inputSlider" />
-
-      <div class="row">
-        <p>Password Length</p>
-        <span id="sliderValue"></span>
-      </div>
-
-      <div class="row">
-        <label for="lowercase">Include Lowercase Letters (a-z)</label>
-        <input type="checkbox" name="lowercase" id="lowercase" checked/>
-      </div>
-
-      <div class="row">
-        <label for="uppercase">Include Uppercase Letters (A-Z)</label>
-        <input type="checkbox" name="uppercase" id="uppercase" checked/>
-      </div>
-
-      <div class="row">
-        <label for="numbers">Include Numbers (0-9)</label>
-        <input type="checkbox" name="numbers" id="numbers" checked/>
-      </div>
-
-      <div class="row">
-        <label for="symbols">Include Symbols (@-*)</label>
-        <input type="checkbox" name="symbols" id="symbols" checked/>
-      </div>
-
-      <button type="button" class="genBtn" id="genBtn">
-        Generate Password
-      </button>
-    </div>
     </div>
 
     <script src="script.js"></script>
@@ -65,14 +64,14 @@
         const bubble = document.createElement('div');
         bubble.className = 'bubble';
         
-        const size = Math.random() * 80 + 20; // Size between 20-100px
+        const size = Math.random() * 80 + 20;
         bubble.style.width = size + 'px';
         bubble.style.height = size + 'px';
         
         const x = Math.random() * window.innerWidth;
         bubble.style.left = x + 'px';
         
-        const duration = Math.random() * 3 + 5; // Duration between 5-8s
+        const duration = Math.random() * 3 + 5;
         bubble.style.animationDuration = duration + 's';
         
         bubbleContainer.appendChild(bubble);
@@ -80,10 +79,8 @@
         setTimeout(() => bubble.remove(), duration * 1000);
       }
       
-      // Create bubbles at intervals
       setInterval(createBubble, 800);
       
-      // Create initial bubbles
       for (let i = 0; i < 3; i++) {
         setTimeout(createBubble, i * 300);
       }
